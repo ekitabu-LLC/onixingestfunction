@@ -26,7 +26,7 @@ var sourceBlobClient = new BlobClient(sourceConnString, "containerName", myBlob)
 var sourceBlobSasToken = sourceBlobClient.GenerateSasUri(BlobSasPermissions.Read, DateTimeOffset.Now);
 
 // Create DESTINATION Blob Client
-var destBlobClient = new BlobClient(destConnString, "containerName", myBlob);
+var destBlobClient = new BlobClient(sourceConnString, "containerName", myBlob);
 
 // Initiate Blob Copy from SOURCE to DESTINATION
 await destBlobClient.StartCopyFromUriAsync(sourceBlobSasToken);
